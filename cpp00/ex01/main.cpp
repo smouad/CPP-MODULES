@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/24 10:49:11 by msodor            #+#    #+#             */
-/*   Updated: 2023/08/17 13:30:23 by msodor           ###   ########.fr       */
+/*   Created: 2023/08/06 17:41:00 by msodor            #+#    #+#             */
+/*   Updated: 2023/08/14 16:32:06 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONEBOOK_HPP
-#define PHONEBOOK_HPP
+#include "PhoneBook.hpp"
 
-#include <iostream>
-#include "Contact.hpp"
-#include <iomanip>
-#include <iostream>
-#include <sstream>
-
-class PhoneBook
+int main()
 {
-private:
-	Contact	contacts[8];
-	int			contactCount;
-public:
-	PhoneBook();
-	~PhoneBook();
-	void				addToPhoneBook();
-	void				searchContact();
-	std::string replace(std::string str);
-	void				printContact(int index);
-};
+	PhoneBook phoneBook;
 
-#endif
+	std::string command;
+	while (1)
+	{
+		std::cout << "Enter your command: ";
+		std::cin >> command;
+		if (command == "ADD")
+		{
+			phoneBook.addToPhoneBook();
+		}
+		else if (command == "SEARCH")
+		{
+			phoneBook.searchContact();
+		}
+		else if (command == "EXIT")
+			break ;
+	}
+}

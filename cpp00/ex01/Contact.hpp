@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/24 10:49:08 by msodor            #+#    #+#             */
-/*   Updated: 2023/07/30 19:55:36 by msodor           ###   ########.fr       */
+/*   Updated: 2023/08/14 18:34:02 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,20 @@
 class Contact
 {
 private:
-	std::string	firstName;
-	std::string	lastName;
-	std::string	nickname;
-	std::string	phoneNumber;
-	std::string	emailAddress;
-	int					index;
+	std::string	FirstName;
+	std::string	LastName;
+	std::string	Nickname;
+	std::string	PhoneNumber;
+	std::string	DarkestSecret;
 public:
 	Contact();
 	~Contact();
+	void	addContact();
+	std::string getFirstName();
+	std::string getLastName();
+	std::string getNickname();
+	std::string getPhoneNumber();
+	std::string getDarkestSecret();
 };
 
 #endif
