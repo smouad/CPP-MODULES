@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 18:00:51 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/06 17:34:27 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/06 13:29:04 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/06 13:35:59 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "Harl.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon):weapon(weapon){
-	this->name = name;
-}
+int main(){
+	Harl harl;
 
-HumanA::~HumanA(){
-
-}
-
-void HumanA::attack(){
-	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout << "[DEBUG]" << std::endl;
+	harl.complain("DEBUG");
+	std::cout << "[INFO]" << std::endl;
+	harl.complain("INFO");
+	std::cout << "[ERROR]" << std::endl;
+	harl.complain("ERROR");
+	std::cout << "[WARNING]" << std::endl;
+	harl.complain("WARNING");
 }

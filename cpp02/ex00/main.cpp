@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 18:00:51 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/06 17:34:27 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/07 11:24:26 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/11 17:55:44 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "Fixed.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon):weapon(weapon){
-	this->name = name;
-}
+int main(void){
+	Fixed a;
+	Fixed b(a);
+	Fixed c;
 
-HumanA::~HumanA(){
+	c = b;
 
-}
-
-void HumanA::attack(){
-	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+	std::cout << a.getRawBits() << std::endl;
+	std::cout << b.getRawBits() << std::endl;
+	std::cout << c.getRawBits() << std::endl;
+	return 0;
 }

@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   HumanA.cpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/08/20 18:00:51 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/06 17:34:27 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/06 13:53:50 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/06 15:53:45 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "HumanA.hpp"
+#include "Harl.hpp"
 
-HumanA::HumanA(std::string name, Weapon &weapon):weapon(weapon){
-	this->name = name;
-}
+int main(int ac, char **av){
+	Harl harl;
 
-HumanA::~HumanA(){
+	if (ac !=2){
+		std::cout << "wrong number of argumments" << std::endl;
+		return (1);
+	}
 
-}
-
-void HumanA::attack(){
-	std::cout << name << " attacks with their " << weapon.getType() << std::endl;
+	harl.complain(av[1]);
 }

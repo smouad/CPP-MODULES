@@ -1,10 +1,10 @@
-NAME = replace
+NAME = harlFilter
 
 CC = c++
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -std=c++98
 
-SRC = main.cpp
+SRC = main.cpp Harl.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
@@ -17,6 +17,6 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f $(NAME) *.replace
+	rm -f $(NAME)
 
-re: fclean all
+re: clean all

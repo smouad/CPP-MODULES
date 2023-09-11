@@ -8,9 +8,6 @@ SRC = main.cpp HumanA.cpp HumanB.cpp Weapon.cpp
 
 OBJ = $(SRC:.cpp=.o)
 
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
-
 all: $(NAME)
 
 $(NAME): $(OBJ)
