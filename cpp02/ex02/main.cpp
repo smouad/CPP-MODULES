@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:19:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/14 18:30:32 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/14 18:48:27 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int main( void ) {
 	
 	std::cout << b << std::endl;
 	
-	// std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/14 18:30:56 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/14 18:47:48 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,20 +94,28 @@ bool Fixed::operator!=(Fixed& rhs){
 }
 
 /*arithmetic operators*/
-float Fixed::operator+(Fixed& rhs){
-	return(this->toFloat() + rhs.toFloat());
+Fixed Fixed::operator+(const Fixed& rhs){
+	Fixed res;
+	res.setRawBits(this->getRawBits() + rhs.getRawBits());
+	return(res);
 }
 
-float Fixed::operator-(Fixed& rhs){
-	return(this->toFloat() - rhs.toFloat());
+Fixed Fixed::operator-(const Fixed& rhs){
+	Fixed res;
+	res.setRawBits(this->toFloat() - rhs.toFloat());
+	return(res);
 }
 
-float Fixed::operator*(Fixed& rhs){
-	return(this->toFloat() * rhs.toFloat());
+Fixed Fixed::operator*(const Fixed& rhs){
+	Fixed res;
+	res.setRawBits(this->toFloat() * rhs.toFloat());
+	return(res);
 }
 
-float Fixed::operator/(Fixed& rhs){
-	return(this->toFloat() / rhs.toFloat());
+Fixed Fixed::operator/(const Fixed& rhs){
+	Fixed res;
+	res.setRawBits(this->toFloat() / rhs.toFloat());
+	return(res);
 }
 
 // /*increment/decrement*/
@@ -142,13 +150,13 @@ Fixed& Fixed::max(Fixed& first, Fixed& second){
 }
 
 const Fixed& Fixed::min(const Fixed& first, const Fixed& second){	
-	if (first.toFloat < second.toFloat)
+	if (first.toFloat() < second.toFloat())
 		return (first);
 	return (second);
 }
 
 const Fixed& Fixed::max(const Fixed& first, const Fixed& second){
-	if (first.toFloat > second.toFloat)
+	if (first.toFloat() > second.toFloat())
 		return (first);
 	return (second);
 }

@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/14 18:26:20 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/14 18:44:37 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ public:
 	bool operator==(Fixed& rhs);
 	bool operator!=(Fixed& rhs);
 	/*arithmetic operators*/
-	float operator+(Fixed& rhs);
-	float operator-(Fixed& rhs);
-	float operator*(Fixed& rhs);
-	float operator/(Fixed& rhs);
+	Fixed operator+(const Fixed& rhs);
+	Fixed operator-(const Fixed& rhs);
+	Fixed operator*(const Fixed& rhs);
+	Fixed operator/(const Fixed& rhs);
 	/*increment/decrement*/
 	Fixed& operator++();
 	Fixed& operator++(int);
