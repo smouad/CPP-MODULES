@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Fixed.hpp                                          :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/11 18:22:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/13 14:17:58 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/13 12:19:29 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/14 18:30:32 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "Fixed.hpp"
 
-#include <iostream>
+int main( void ) {
+	Fixed a;
+	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	
+	std::cout << a << std::endl;
+	// std::cout << ++a << std::endl;
+	std::cout << a << std::endl;
+	// std::cout << a++ << std::endl;
+	std::cout << a << std::endl;
+	
+	std::cout << b << std::endl;
+	
+	// std::cout << Fixed::max( a, b ) << std::endl;
 
-class Fixed{
-private:
-	int	fixedPoint;
-	static const int bits;
-public:
-	Fixed();
-	Fixed(const Fixed& src);
-	Fixed(const int value);
-	Fixed(const float value);
-	Fixed& operator=(const Fixed& rhs);
-	~Fixed();
-	int getRawBits(void) const;
-	void setRawBits(int const raw);
-	float toFloat(void) const;
-	int toInt(void) const;
-};
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+	return 0;
+}
