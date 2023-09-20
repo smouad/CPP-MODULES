@@ -1,10 +1,24 @@
-#include "ClapTrap.hpp"
+#include "ScavTrap.hpp"
 
-int main(){
-    ClapTrap player1("mouad");
-    ClapTrap player2("hassan");
-    ClapTrap player3(player2);
+int	main(void)
+{
+	std::cout << std::endl << std::endl << "Performing Alice's rundown..." << std::endl << std::endl;
+	ScavTrap alice("Alice");
 
-    player2.attack("hassan");
-    player1.takeDamage(2);
+	alice.attack("Bob");
+	alice.attack("Chris");
+	alice.attack("Diana");
+	alice.attack("Elisa");
+	alice.attack("Fred");
+	alice.attack("Gemma");
+	alice.attack("Henry");
+	alice.attack("Isabella");
+	alice.attack("Jack");
+	alice.attack("Kevin");
+	alice.attack("Laura");
+	alice.attack("Mike");
+	alice.guardGate();
+
+	std::cout << std::endl << std::endl << "Performing Bob's rundown..." << std::endl << std::endl;
+/* 	bob_rundown(); */
 }

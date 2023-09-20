@@ -46,11 +46,13 @@ void ClapTrap::takeDamage(unsigned int amount){
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-    if (this->hitPoint && this->energyPoint){
+    if (this->hitPoint <= 10 && this->energyPoint){
         std::cout << "ClapTrap " << this->name << " repaired " << amount << " of hitPoint";
         this->hitPoint += amount;
         this->energyPoint -= 1;
     }
-    else
+    else if (this->hitPoint == 0 || this->energyPoint == 0)
         std::cout << "ClapTrap " << this->name << " has no hitPoint or energyPoint left";
+    else
+        std::cout << "ClapTrap " << this->name << " hitPoint full" << std::endl;
 }
