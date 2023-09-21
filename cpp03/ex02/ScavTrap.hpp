@@ -1,31 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:44 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:03 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/21 15:51:25 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/21 15:51:25 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#include "ClapTrap.hpp"
 
-class ClapTrap {
-private:
-    std::string name;
-    int hitPoint;
-    int energyPoint;
-    int attackDamage;
+class ScavTrap:public ClapTrap{
 public:
-    ClapTrap();
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& src);
-    ClapTrap& operator=(const ClapTrap& src);
-    ~ClapTrap();
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
-};
+    /* constructors */
+    ScavTrap();
+    ScavTrap(std::string name);
+    ScavTrap(const ScavTrap& src);
 
+    /* overload operator */
+    ScavTrap& operator=(const ScavTrap& src);
+
+    /* methostds */
+    void attack(const std::string& target);
+    void guardGate(void);
+
+    /* distuctor */
+    ~ScavTrap();
+};

@@ -5,15 +5,15 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:44 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:03 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/21 15:50:54 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/21 15:50:55 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 
 class ClapTrap {
-private:
+protected:
     std::string name;
     int hitPoint;
     int energyPoint;

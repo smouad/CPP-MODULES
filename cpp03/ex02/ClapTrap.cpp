@@ -5,21 +5,19 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:04 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/21 15:50:39 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/21 15:50:51 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
-    this->hitPoint = 10;
-    this->energyPoint = 10;
-    this->attackDamage = 0;
+    std::cout << "ClapTrap " << "default" << " created with default constructor." << std::endl;
 }
 
-ClapTrap::ClapTrap(std::string name){
-    this->name = name;
+ClapTrap::ClapTrap(std::string name): name(name){
+    std::cout << "ClapTrap " << this->name << " created." << std::endl;
     this->hitPoint = 10;
     this->energyPoint = 10;
     this->attackDamage = 0;
@@ -40,6 +38,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src){
 }
 
 ClapTrap::~ClapTrap(){
+    std::cout << "ClapTrap destuctor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){
@@ -61,7 +60,7 @@ void ClapTrap::takeDamage(unsigned int amount){
 }
 
 void ClapTrap::beRepaired(unsigned int amount){
-    if (this->hitPoint <= 10 && this->energyPoint){
+    if (this->hitPoint <= 100 && this->energyPoint){
         std::cout << "ClapTrap " << this->name << " repaired " << amount << " of hitPoint" << std::endl;
         this->hitPoint += amount;
         this->energyPoint -= 1;

@@ -5,19 +5,29 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:50:23 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:24 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/21 15:51:10 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/21 15:51:11 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScavTrap.hpp"
+#include "FragTrap.hpp"
 
-int	main(void)
+int main()
 {
-	ScavTrap alice("Alice");
+    FragTrap frag1("Goku");
+    FragTrap frag2("Vegeta");
 
-	alice.attack("Mike");
-    alice.takeDamage(10);
-    alice.beRepaired(5);
-	alice.guardGate();
+
+    frag1.attack("hassan");
+    frag2.takeDamage(30);
+    frag2.beRepaired(5);
+
+    frag2.attack("driss");
+    frag1.takeDamage(30);
+    frag1.beRepaired(15);
+
+    frag1.highFivesGuys();
+    frag2.highFivesGuys();
+
+    return 0;
 }
