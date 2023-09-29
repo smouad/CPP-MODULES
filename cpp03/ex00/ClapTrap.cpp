@@ -13,12 +13,15 @@
 #include "ClapTrap.hpp"
 
 ClapTrap::ClapTrap(){
+    std::cout << "ClapTrap default constructor called" << std::endl;
+    this->name = "main";
     this->hitPoint = 10;
     this->energyPoint = 10;
     this->attackDamage = 0;
 }
 
 ClapTrap::ClapTrap(std::string name){
+    std::cout << "ClapTrap constructor called" << std::endl;
     this->name = name;
     this->hitPoint = 10;
     this->energyPoint = 10;
@@ -26,10 +29,12 @@ ClapTrap::ClapTrap(std::string name){
 }
 
 ClapTrap::ClapTrap(const ClapTrap& src){
+    std::cout << "ClapTrap copy constructor called" << std::endl;
    *this = src; 
 }
 
 ClapTrap& ClapTrap::operator=(const ClapTrap& src){
+    std::cout << "ClapTrap coppy asingement called" << std::endl;
     if (this != &src){
         this->name = src.name;
         this->hitPoint = src.hitPoint;
@@ -40,6 +45,7 @@ ClapTrap& ClapTrap::operator=(const ClapTrap& src){
 }
 
 ClapTrap::~ClapTrap(){
+    std::cout << "ClapTrap destructor called" << std::endl;
 }
 
 void ClapTrap::attack(const std::string& target){

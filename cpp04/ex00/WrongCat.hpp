@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   WrongCat.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:44 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:03 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/25 12:49:42 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/25 13:43:40 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef WRONGCAT_HPP
+#define WRONGCAT_HPP
 
-class ClapTrap {
-protected:
-    std::string name;
-    int hitPoint;
-    int energyPoint;
-    int attackDamage;
+#include "WrongAnimal.hpp"
+
+class WrongCat: public WrongAnimal{
 public:
-    ClapTrap();
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& src);
-    ClapTrap& operator=(const ClapTrap& src);
-    ~ClapTrap();
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+    /* constructors */
+    WrongCat();
+    WrongCat(const WrongCat& src);
+
+    /* operators */
+    WrongCat& operator=(const WrongCat& src);
+
+    /* distructor */ 
+    ~WrongCat();
+
+    /* member function */
+    void makeSound() const;
+    std::string getType() const;
 };
 
+#endif

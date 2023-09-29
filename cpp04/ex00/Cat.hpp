@@ -1,31 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ClapTrap.hpp                                       :+:      :+:    :+:   */
+/*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:44 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:03 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/25 12:49:21 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/25 13:31:34 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
+#ifndef CAT_HPP
+#define CAT_HPP
 
-class ClapTrap {
-protected:
-    std::string name;
-    int hitPoint;
-    int energyPoint;
-    int attackDamage;
+#include "Animal.hpp"
+#include "Brain.hpp"
+
+class Cat: public Animal{
+private:
+    Brain* brain;
 public:
-    ClapTrap();
-    ClapTrap(std::string name);
-    ClapTrap(const ClapTrap& src);
-    ClapTrap& operator=(const ClapTrap& src);
-    ~ClapTrap();
-    void attack(const std::string& target);
-    void takeDamage(unsigned int amount);
-    void beRepaired(unsigned int amount);
+    /* constructors */
+    Cat();
+    Cat(const Cat& src);
+
+    /* operators */
+    Cat& operator=(const Cat& src);
+
+    /* destructor */
+    ~Cat();
+
+    /* member function */
+    void makeSound() const;
+    std::string getType() const;
 };
 
+#endif

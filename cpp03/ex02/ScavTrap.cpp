@@ -5,32 +5,41 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:51:19 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:51:20 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/21 15:50:28 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/21 15:50:29 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
 
 ScavTrap::ScavTrap(): ClapTrap(){
-    std::cout << "ScavTrap " << this->name << " created with default constructor." << std::endl;
+    std::cout << "ScavTrap default constructor called" << std::endl;
+    this->name = "main";
     this->hitPoint = 100;
-    this->energyPoint = 100;
-    this->attackDamage = 30;
+    this->energyPoint = 50;
+    this->attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(std::string name): ClapTrap(name){
-    std::cout << "ScavTrap " << this->name << " created." << std::endl;
+    std::cout << "ScavTrap constructor called" << std::endl;
     this->hitPoint = 100;
-    this->energyPoint = 100;
-    this->attackDamage = 30;
+    this->energyPoint = 50;
+    this->attackDamage = 20;
 }
 
 ScavTrap::ScavTrap(const ScavTrap& src): ClapTrap(src){
+    std::cout << "ScavTrap copy constructor called" << std::endl;
+    *this = src;
 }
 
 ScavTrap& ScavTrap::operator=(const ScavTrap& src){
-    ClapTrap::operator=(src);
+    std::cout << "ScavTrap copy asignement called" << std::endl;
+    if (this != &src){
+        this->name = src.name;
+        this->attackDamage = src.attackDamage;
+        this->hitPoint = src.hitPoint;
+        this->energyPoint = src.energyPoint;
+    }
     return (*this);
 }
 

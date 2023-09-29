@@ -5,19 +5,34 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/21 15:49:57 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/21 15:50:01 by msodor           ###   ########.fr       */
+/*   Created: 2023/09/25 12:49:30 by msodor            #+#    #+#             */
+/*   Updated: 2023/09/28 13:17:49 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "Cat.hpp"
+#include "Dog.hpp"
+#include "Animal.hpp"
 
-int main(){
-    ClapTrap player1;
-    ClapTrap p2(player1);
-    ClapTrap player2("hassan");
+int main( void )
+{
+	// const Animal* j = new Dog();
+	// const Animal* i = new Cat();
 
-    p2.attack("mouad");
-    player1.takeDamage(5); 
-    player1.beRepaired(2);
+	// delete j;//should not create a leak
+	// delete i;
+
+	const Animal* animals[4];
+	for (int i = 0; i < 4; i++){
+		if (i < 2)
+			animals[i] = new Dog();
+		else
+			animals[i] = new Cat();
+	}
+
+	for ( int i = 0; i < 4; i++ ) {
+			delete animals[i];
+	}
+
+	return 0;
 }
