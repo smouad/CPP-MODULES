@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:21:24 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/09 17:52:51 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/09 23:38:29 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ public:
 	std::string getName() const;
 	int getGradeToSign() const;
 	int getGradeToExecute() const;
+  bool getIsSigned() const;
 	//methods
 	void beSigned(Bureaucrat& bureaucrat);
 	//exceptions

@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:18 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/09 15:16:50 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/09 23:44:33 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <iostream>
 #include <exception>
+#include "Form.hpp"
 
 class Bureaucrat{
 private:
@@ -33,6 +34,7 @@ public:
 	//methods
 	void	increment(void);
 	void	decrement(void);
+  void  signForm(Form& form);
 	//exeptions
 	class GradeTooHighException : public std::exception {
 		public: 
