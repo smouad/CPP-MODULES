@@ -6,14 +6,14 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:49:26 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/27 16:05:34 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/04 13:29:30 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef DOG_HPP
 #define DOG_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Dog: public Animal{

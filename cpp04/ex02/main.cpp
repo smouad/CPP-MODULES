@@ -6,13 +6,13 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:49:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/28 13:52:21 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/04 13:29:39 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include "Dog.hpp"
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 
 int main( void )
 {

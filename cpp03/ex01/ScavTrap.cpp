@@ -49,7 +49,7 @@ ScavTrap::~ScavTrap(){
 
 void ScavTrap::attack(const std::string& target){
     if (this->hitPoint && this->energyPoint)
-        std::cout << "ScavTrap " << this->name << " attacks " << target << " causing " << this->attackDamage << std::endl;
+        std::cout << "ScavTrap " << this->name << " attacks " << target << ", causing " << this->attackDamage << " points of damage!" << std::endl;
     else
         std::cout << "ScavTrap " << this->name << "have no energyPoint or hitPoint" << std::endl;
 }

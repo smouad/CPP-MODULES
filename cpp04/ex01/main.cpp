@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:49:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/28 13:17:49 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/07 11:12:03 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ int main( void )
 
 	// delete j;//should not create a leak
 	// delete i;
-
 	const Animal* animals[4];
 	for (int i = 0; i < 4; i++){
 		if (i < 2)
@@ -29,7 +28,6 @@ int main( void )
 		else
 			animals[i] = new Cat();
 	}
-
 	for ( int i = 0; i < 4; i++ ) {
 			delete animals[i];
 	}

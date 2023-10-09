@@ -6,14 +6,14 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:49:21 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/27 16:05:27 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/04 13:29:19 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CAT_HPP
 #define CAT_HPP
 
-#include "Animal.hpp"
+#include "AAnimal.hpp"
 #include "Brain.hpp"
 
 class Cat: public Animal{

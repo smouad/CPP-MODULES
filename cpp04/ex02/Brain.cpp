@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 14:01:25 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/27 15:33:35 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/07 11:57:06 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ Brain::Brain(){
 
 Brain::Brain(const Brain& src){
 	std::cout << "Brain copy constructor called" << std::endl;
-	*this = src;
+	if (this != &src)
+		*this = src;
 }
 
 Brain& Brain::operator=(const Brain& src){

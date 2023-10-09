@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:49:21 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/25 13:31:34 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/04 16:36:36 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,8 @@
 #define CAT_HPP
 
 #include "Animal.hpp"
-#include "Brain.hpp"
 
 class Cat: public Animal{
-private:
-    Brain* brain;
 public:
     /* constructors */
     Cat();
