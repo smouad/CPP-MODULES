@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/09 17:21:24 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/09 23:38:29 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:05:23 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FORM_HPP
 
 #include "Bureaucrat.hpp"
+class Bureaucrat;
 
 class Form{
 private:

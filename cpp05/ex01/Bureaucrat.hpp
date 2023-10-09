@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:18 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/09 23:44:33 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 00:05:51 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include <iostream>
 #include <exception>
 #include "Form.hpp"
-
+class Form;
 class Bureaucrat{
 private:
 	std::string const name;
