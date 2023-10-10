@@ -6,13 +6,13 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 00:24:03 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 12:21:53 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat(){}
+Bureaucrat::Bureaucrat() : name("default"), grade(150){}
 
 Bureaucrat::Bureaucrat(std::string const name, int grade) : name(name), grade(grade){
 	if (grade < 1)
