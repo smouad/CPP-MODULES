@@ -6,28 +6,45 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:22 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 00:25:47 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 17:59:53 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Form.hpp"
+#include "AForm.hpp"
+#include "Bureaucrat.hpp"
+#include "ShrubberyCreationForm.hpp"
+#include "PresidentialPardonForm.hpp"
+#include "RobotomyRequestForm.hpp"
 
 int main()
 {
-  Form form("Form 1", 1, 1);
-  Bureaucrat bureaucrat("hassan", 1);
-  Form form2("Form 2", 2, 2);
-  Bureaucrat bureaucrat2("sami", 3);
+    Bureaucrat *bureaucrat = new Bureaucrat("Bureaucrat", 6);
+    AForm *shrubberyForm = new ShrubberyCreationForm("Home");
+    AForm *robotomyForm = new RobotomyRequestForm("Elon Musk");
+    AForm *presidentialForm = new PresidentialPardonForm("Joe biden");
 
-  std::cout << form;
-  std::cout << form2;
-  std::cout << bureaucrat;
-  std::cout << bureaucrat2;
+    std::cout << *bureaucrat;
+    std::cout << *shrubberyForm;
+    std::cout << *robotomyForm;
+    std::cout << *presidentialForm;
 
-  bureaucrat.signForm(form);
-  bureaucrat2.signForm(form2);
+    bureaucrat->signForm(*shrubberyForm);
+    bureaucrat->executeForm(*shrubberyForm);
 
-  std::cout << form;
-  std::cout << form2;
-  return 0;
+    bureaucrat->signForm(*robotomyForm);
+    bureaucrat->executeForm(*robotomyForm);
+
+    bureaucrat->signForm(*presidentialForm);
+    bureaucrat->executeForm(*presidentialForm);
+
+    std::cout << *shrubberyForm;
+    std::cout << *robotomyForm;
+    std::cout << *presidentialForm; 
+
+    delete bureaucrat;
+    delete shrubberyForm;
+    delete robotomyForm;
+    delete presidentialForm;
+
+    return 0;
 }
