@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:18 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 15:52:43 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 17:58:18 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ public:
 	void	increment(void);
 	void	decrement(void);
   void  signForm(AForm& form);
+	void  executeForm(AForm const & form);
 	//exeptions
 	class GradeTooHighException : public std::exception {
 		public: 
