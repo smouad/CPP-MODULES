@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:05:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 17:53:13 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:34:59 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ PresidentialPardonForm::PresidentialPardonForm(std::string target): AForm("Presi
 	this->target = target;
 }
 
-PresidentialPardonForm::PresidentialPardonForm(PresidentialPardonForm const &src){
+PresidentialPardonForm::PresidentialPardonForm(const PresidentialPardonForm& src): AForm(src){
 	if (this != &src)
 		*this = src;
 }

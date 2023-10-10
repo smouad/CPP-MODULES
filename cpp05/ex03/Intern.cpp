@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 18:13:33 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 18:49:51 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:22:23 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,5 +56,6 @@ AForm* Intern::makeForm(std::string const &formName, std::string const &target){
 			return (form[i]);
 		}
 	}
+  std::cout << "Intern can't create " << formName << std::endl;
 	return (NULL);
 }

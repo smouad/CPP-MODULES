@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:05:25 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 17:57:03 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/10 21:35:23 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ RobotomyRequestForm::RobotomyRequestForm(std::string target): AForm("RobotomyReq
 	this->target = target;
 }
 
-RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src){
+RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src): AForm(src){
 	if (this != &src)
 		*this = src;
 }
