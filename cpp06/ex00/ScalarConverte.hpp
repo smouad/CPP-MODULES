@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:05:14 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/11 19:20:53 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/11 23:16:07 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include <iostream>
 # include <string>
-# include <iomanip>
+# include <cstdlib>
 
 class ScalarConverter{
 private:
