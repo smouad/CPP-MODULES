@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/08 11:53:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 17:58:41 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/11 15:53:37 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void Bureaucrat::executeForm(AForm const & form){
 		form.execute(*this);
 		std::cout << this->getName() << " executed " << form.getName() << std::endl;
 	}
-	catch (AForm::GradeTooLowException& ex){
+	catch (std::exception& ex){
 		std::cout << this->getName() << " couldn't execute " << form.getName() << " because " << ex.what() << std::endl;
 	}
 }

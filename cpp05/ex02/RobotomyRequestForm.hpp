@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:05:28 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 17:57:12 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:13:34 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 class RobotomyRequestForm : public AForm{
 private:
 	std::string	target;
+	int	randNumber;
 public:
 	RobotomyRequestForm();
 	RobotomyRequestForm(std::string target);

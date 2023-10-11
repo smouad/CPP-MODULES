@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/10 16:05:25 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/10 21:39:02 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/11 16:16:13 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,16 +28,23 @@ RobotomyRequestForm::RobotomyRequestForm(RobotomyRequestForm const &src):AForm(s
 RobotomyRequestForm::~RobotomyRequestForm(){ }
 
 RobotomyRequestForm &RobotomyRequestForm::operator=(RobotomyRequestForm const &src){
-	if (this != &src)
+	if (this != &src){
 		this->target = src.target;
+		this->randNumber = src.randNumber;
+	}
 	return *this;
 }
 
 void RobotomyRequestForm::execute(Bureaucrat const &executor) const{
-	if (this->getIsSigned() == false || executor.getGrade() > this->getGradeToExecute())
+	if (executor.getGrade() > this->getGradeToExecute())
 		throw AForm::GradeTooLowException();
+	else if (this->getIsSigned() == false)
+		throw AForm::FormNotSignedException();
 	else{
 		std::cout << "Brrrrrrrrrr" << std::endl;
-		std::cout << this->target << " has been robotomized successfully 50% of the time." << std::endl;
+		if (rand() % 2 == 0)
+			std::cout << this->target << " has not been robotomized successfully" << std::endl;
+		else if (rand() % 2 == 1)
+			std::cout << this->target << " has been robotomized successfully" << std::endl;
 	}
 }
