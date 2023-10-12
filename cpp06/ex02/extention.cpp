@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:57:10 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/13 00:05:00 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/13 00:38:26 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,20 @@ Base* generate(void){
 	return NULL;
 }
 
-void identify(Base *p){
-	if (dynamic_cast<A *>(p))
+void identify(Base* p){
+	if (dynamic_cast<A*>(p))
 		std::cout << "A" << std::endl;
 
-	else if (dynamic_cast<B *>(p))
+	else if (dynamic_cast<B*>(p))
 		std::cout << "B" << std::endl;
 
-	else if (dynamic_cast<C *>(p))
+	else if (dynamic_cast<C*>(p))
 		std::cout << "C" << std::endl;
 }
 
-void identify(Base &p){
+void identify(Base& p){
 	try{
-		A& a = dynamic_cast<A &>(p);
+		A& a = dynamic_cast<A&>(p);
 		(void)a;
 		std::cout << "A" << std::endl;
 	}
@@ -49,7 +49,7 @@ void identify(Base &p){
 	}
 
 	try{
-		B& b = dynamic_cast<B &>(p);
+		B& b = dynamic_cast<B&>(p);
 		(void)b;
 		std::cout << "B" << std::endl;
 	}
@@ -58,7 +58,7 @@ void identify(Base &p){
 	}
 
 	try{
-		C& c = dynamic_cast<C &>(p);
+		C& c = dynamic_cast<C&>(p);
 		(void)c;
 		std::cout << "C" << std::endl;
 	}
