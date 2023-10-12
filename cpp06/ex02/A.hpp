@@ -1,35 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Serialize.hpp                                      :+:      :+:    :+:   */
+/*   A.hpp                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/12 16:48:40 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/12 17:32:11 by msodor           ###   ########.fr       */
+/*   Created: 2023/10/12 17:43:50 by msodor            #+#    #+#             */
+/*   Updated: 2023/10/12 17:45:16 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SERIALIZE_HPP
-# define SERIALIZE_HPP
+#ifndef A_HPP
+# define A_HPP
 
-# include <iostream>
-# include <cstdint>
+# include "Base.hpp"
 
-struct Data{
-	std::string s1;
-	int n;
-	std::string s2;
-};
+class A : public Base{};
 
-class Serialize{
-private:
-	Serialize();
-public:
-	Serialize(const Serialize& src);
-	~Serialize();
-	Serialize &operator=(const Serialize& rhs);
-	static uintptr_t serialize(Data* ptr);
-	static Data* deserialize(uintptr_t raw);
-};
 #endif
