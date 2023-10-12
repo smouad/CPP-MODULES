@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/12 20:57:10 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/12 21:30:27 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/13 00:05:00 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,19 +30,39 @@ Base* generate(void){
 void identify(Base *p){
 	if (dynamic_cast<A *>(p))
 		std::cout << "A" << std::endl;
+
 	else if (dynamic_cast<B *>(p))
 		std::cout << "B" << std::endl;
+
 	else if (dynamic_cast<C *>(p))
 		std::cout << "C" << std::endl;
 }
 
 void identify(Base &p){
-	if (dynamic_cast<A *>(&p))
-			std::cout << "A" << std::endl;
+	try{
+		A& a = dynamic_cast<A &>(p);
+		(void)a;
+		std::cout << "A" << std::endl;
+	}
+	catch(std::exception& ex){
+		std::cout << ex.what() << std::endl;
+	}
 
-	else if (dynamic_cast<B *>(&p))
+	try{
+		B& b = dynamic_cast<B &>(p);
+		(void)b;
 		std::cout << "B" << std::endl;
+	}
+	catch(std::exception& ex){
+		std::cout << ex.what() << std::endl;
+	}
 
-	else if (dynamic_cast<C *>(&p))
+	try{
+		C& c = dynamic_cast<C &>(p);
+		(void)c;
 		std::cout << "C" << std::endl;
+	}
+	catch(std::exception& ex){
+		std::cout << ex.what() << std::endl;
+	}
 }
