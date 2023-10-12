@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/11 19:29:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/12 16:46:54 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/12 20:32:50 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,12 @@ ScalarConverter &ScalarConverter::operator=(const ScalarConverter &rhs){
 void ScalarConverter::convert(std::string str){
   double d;
   char *endPtr;
+  int precision = str.find('.') != std::string::npos ? str.length() - str.find('.') - 1 : 1;
+
 	if(str[str.length() - 1] == 'f' && str.length() != 1)
 		str.erase(str.length() - 1, 1);
   d = std::strtod(str.c_str(), &endPtr);
-	std::cout << std::fixed << std::setprecision(std::find(str.begin(), str.end(), '.') != str.end() ? str.length() - str.find('.') - 1 : 1);
+	std::cout << std::fixed << std::setprecision(precision);
 
 	if (str.length() == 1 && !isdigit(*endPtr) && !isdigit(str[0])){
 		std::cout << "char: " << static_cast<char>(str[0]) << std::endl;
