@@ -1,6 +1,6 @@
-NAME = Serialize
+NAME = program
 
-SRCS = main.cpp Serialize.cpp
+SRCS = main.cpp extention.cpp
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
