@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/13 14:05:22 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/12 15:14:26 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ int Fixed::toInt(void) const{
 
 /*operators*/
 
-std::ostream& operator<<(std::ostream& os, const Fixed& fixed){
-	os << fixed.toFloat();
-	return (os);
-}
+// std::ostream& operator<<(std::ostream& os, const Fixed& fixed){
+// 	os << fixed.toFloat();
+// 	return (os);
+// }
 
 Fixed& Fixed::operator=(const Fixed& rhs){
 	std::cout << "Copy assignment operator calle" << std::endl;
