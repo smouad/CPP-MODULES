@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 18:24:15 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/13 18:57:29 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/13 21:30:23 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ void	print(T a){
 
 int main( void ) {
 	int tab[] = { 0, 1, 2, 3, 4 };
-	char tab2[6] = "Hello";
+	char tab2[] = "Hello 42";
 	iter(tab, 5, print<int>);
 	std::cout << std::endl;
-	iter(tab2, 5, print<char>);
+	iter(tab2, 8, print<char>);
 	return 0;
 }
