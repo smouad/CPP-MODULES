@@ -6,12 +6,13 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:37:08 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/13 21:37:09 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/13 21:46:32 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include <Array.hpp>
+// #include <Array.hpp>
+#include "Array.hpp"
 
 #define MAX_VAL 750
 int main(int, char**)
