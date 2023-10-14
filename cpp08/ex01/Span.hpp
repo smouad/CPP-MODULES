@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:42:21 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 19:35:15 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/14 20:46:03 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ public:
 	void addNumber(int);
 	int shortestSpan();
 	int longestSpan();
+  
 
 	class AlreadyFilledSpan : public std::exception{
 	public:

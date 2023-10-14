@@ -31,13 +31,19 @@ void Span::addNumber(int n){
 int Span::longestSpan(){
 	if (this->intVector.size() <= 1)
 		throw Span::NoSpanFound();
-	
+  std::sort(this->intVector.begin(), this->intVector.end());
+	return (this->intVector.back() - this->intVector.front());
 }
 
 int Span::shortestSpan(){
 	if (this->intVector.size() <= 1)
 		throw Span::NoSpanFound();
+  std::sort(this->intVector.begin(), this->intVector.end());
+  std::vector<int>::iterator it = this->intVector.begin();
+  return (*(it + 1) - *it);
 }
+
+
 
 const char *Span::AlreadyFilledSpan::what() const throw(){
 	return ("Already N elements stored");

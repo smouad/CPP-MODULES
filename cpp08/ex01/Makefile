@@ -1,6 +1,6 @@
 NAME = program
 
-SRCS = main.cpp #Span.cpp
+SRCS = main.cpp Span.cpp
 
 CXX = c++
 CXXFLAGS = -Wall -Wextra -Werror -std=c++98
