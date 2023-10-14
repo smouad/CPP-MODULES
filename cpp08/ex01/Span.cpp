@@ -24,17 +24,15 @@ void Span::addNumber(int n){
 		this->intVector.push_back(n);
 		this->N--;
 	}
-	// else{
-	// 	throw ;
-	// }
+	else{
+		throw Span::AlreadyFilledSpan();
+	}
 }
 
-void Span::longestSpan()
-{
+void Span::longestSpan(){
 }
 
-void Span::shortestSpan()
-{
+void Span::shortestSpan(){
 }
 
 const char *Span::AlreadyFilledSpan::what() const throw(){
