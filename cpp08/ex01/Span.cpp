@@ -24,15 +24,19 @@ void Span::addNumber(int n){
 		this->intVector.push_back(n);
 		this->N--;
 	}
-	else{
+	else
 		throw Span::AlreadyFilledSpan();
-	}
 }
 
-void Span::longestSpan(){
+int Span::longestSpan(){
+	if (this->intVector.size() <= 1)
+		throw Span::NoSpanFound();
+	
 }
 
-void Span::shortestSpan(){
+int Span::shortestSpan(){
+	if (this->intVector.size() <= 1)
+		throw Span::NoSpanFound();
 }
 
 const char *Span::AlreadyFilledSpan::what() const throw(){
