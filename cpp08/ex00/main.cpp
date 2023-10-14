@@ -5,26 +5,23 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 12:19:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 13:21:19 by msodor           ###   ########.fr       */
+/*   Created: 2023/10/14 18:08:36 by msodor            #+#    #+#             */
+/*   Updated: 2023/10/14 18:13:24 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#include "easyfind.hpp"
+#include <vector>
 
-int main( void ) {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	
-	std::cout << b << std::endl;
-	
-	// std::cout << Fixed::max( a, b ) << std::endl;
+int main(){
+	std::vector<int> intVector;
+	intVector.push_back(32);
+	intVector.push_back(1);
+	intVector.push_back(3);
+	intVector.push_back(2);
+	intVector.push_back(29);
+	intVector.push_back(36);
 
-	return 0;
+	easyfind(intVector, 3);
+	easyfind(intVector, 100);	
 }

@@ -1,30 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   easyfind.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/09/13 12:19:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 13:21:19 by msodor           ###   ########.fr       */
+/*   Created: 2023/10/14 15:21:55 by msodor            #+#    #+#             */
+/*   Updated: 2023/10/14 18:22:01 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Fixed.hpp"
+#ifndef EASYFIND_HPP
+#define EASYFIND_HPP
 
-int main( void ) {
-	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
-	
-	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
-	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
-	std::cout << a << std::endl;
-	
-	std::cout << b << std::endl;
-	
-	// std::cout << Fixed::max( a, b ) << std::endl;
+#include <iostream>
+#include <algorithm>
 
-	return 0;
+
+template <typename T>
+void easyfind(T container, int toFind){
+	typename T::iterator res = std::find(container.begin(), container.end(), toFind);
+	if (container.end() == res)
+		std::cerr << toFind << ": not found on that container" << std::endl;
+	else
+		std::cout << toFind << ": is found" << std::endl;
 }
+
+#endif

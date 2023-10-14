@@ -1,0 +1,46 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   Span.hpp                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/10/14 18:42:21 by msodor            #+#    #+#             */
+/*   Updated: 2023/10/14 19:22:12 by msodor           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#ifndef SPAN_H
+#define SPAN_H
+
+#include <iostream>
+#include <algorithm>
+#include <vector>
+#include <exception>
+
+class Span {
+private:
+	std::vector<int> intVector;
+	unsigned int N;
+public:
+	Span();
+	Span(unsigned int n);
+	Span(const Span& src);
+	Span& operator=(const Span& src);
+	~Span();
+
+	void addNumber(int);
+	void shortestSpan();
+	void longestSpan();
+
+	class AlreadyFilledSpan : public std::exception{
+	public:
+		const char* what() const throw();
+	};
+	
+	class NoSpanFound : public std::exception{
+		const char* what() const throw();
+	};
+};
+
+#endif
