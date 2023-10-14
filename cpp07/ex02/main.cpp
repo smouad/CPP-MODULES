@@ -6,61 +6,33 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/13 21:37:08 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/13 21:46:32 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/14 12:48:25 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-// #include <Array.hpp>
 #include "Array.hpp"
 
-#define MAX_VAL 750
-int main(int, char**)
-{
-    Array<int> numbers(MAX_VAL);
-    int* mirror = new int[MAX_VAL];
-    srand(time(NULL));
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        const int value = rand();
-        numbers[i] = value;
-        mirror[i] = value;
-    }
-    //SCOPE
-    {
-        Array<int> tmp = numbers;
-        Array<int> test(tmp);
-    }
+int main(){
+	Array<int> a(5);
+	Array<std::string> b(5);
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        if (mirror[i] != numbers[i])
-        {
-            std::cerr << "didn't save the same value!!" << std::endl;
-            return 1;
-        }
-    }
-    try
-    {
-        numbers[-2] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
-    try
-    {
-        numbers[MAX_VAL] = 0;
-    }
-    catch(const std::exception& e)
-    {
-        std::cerr << e.what() << '\n';
-    }
+	for (int i = 0; i < 5; i++){
+		a[i] = i;
+	}
 
-    for (int i = 0; i < MAX_VAL; i++)
-    {
-        numbers[i] = rand();
-    }
-    delete [] mirror;//
-    return 0;
+	b[0] = "hello";
+	b[1] = "world";
+	b[2] = "this";
+	b[3] = "is";
+	b[4] = "me";
+	
+	std::cout << "a: ";
+	for (int i = 0; i < 5; i++)
+		std::cout << a[i] << " ";
+	std::cout << std::endl;
+	std::cout << "b: ";
+	for (int i = 0; i < 5; i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
 }
