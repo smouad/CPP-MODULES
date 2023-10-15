@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/14 18:42:21 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 20:46:03 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/15 00:51:32 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ public:
 	void addNumber(int);
 	int shortestSpan();
 	int longestSpan();
-  
+  void addInRange(std::vector<int>::iterator begin, std::vector<int>::iterator end);
 
 	class AlreadyFilledSpan : public std::exception{
 	public:

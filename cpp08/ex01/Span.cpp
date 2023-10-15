@@ -37,6 +37,12 @@ int Span::longestSpan(){
 	return (tmp.back() - tmp.front());
 }
 
+void Span::addInRange(std::vector<int>::iterator begin, std::vector<int>::iterator end){
+  if (end - begin > static_cast<long>(this->N - this->intVector.size()))
+    throw Span::AlreadyFilledSpan();
+  this->intVector.insert(this->intVector.end(), begin, end);
+}
+
 int Span::shortestSpan(){
 	if (this->intVector.size() <= 1)
 		throw Span::NoSpanFound();
@@ -46,8 +52,6 @@ int Span::shortestSpan(){
   std::vector<int>::iterator it = tmp.begin();
   return (*(it + 1) - *it);
 }
-
-
 
 const char *Span::AlreadyFilledSpan::what() const throw(){
 	return ("Already N elements stored");
