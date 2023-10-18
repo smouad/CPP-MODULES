@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:48:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/18 16:54:30 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/18 22:48:43 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ void BitcoinExchange::fillTable()
 	std::ifstream dFile("data.csv");
 	// declare the map and the string to read the file
 	std::string line;
-	// read the file line by line
 
 	std::getline(dFile, line);
 	while (std::getline(dFile, line)){
@@ -52,10 +51,14 @@ void BitcoinExchange::fillTable()
 
 void BitcoinExchange::getChange(std::string inputFile)
 {
-	std::ifstream inFile(inputFile);
+	std::ifstream inFile(inputFile.c_str());
+  if (!inFile.is_open()){
+    std::cout << "Error: could not open file." << std::endl;
+    return ;
+  }
 	std::string line;
 	std::string date;
-	int value;
+	double value;
 	
 	std::getline(inFile, line);
 	while (std::getline(inFile, line)){	
@@ -65,9 +68,28 @@ void BitcoinExchange::getChange(std::string inputFile)
 			continue;
 		}
 		date = line.substr(0, pipePos - 1);
-		
-	}
-	
+    if (checkValidDate(date)){
+      std::cout << "Error: bad input => " << date << std::endl;
+      continue;
+	  }
+    value = std::strtod(line.substr(pipePos + 1).c_str(), NULL);
+    if (value <= 0){
+      std::cout << "Error: not a positive number." << std::endl;
+      continue;
+    }
+    if (value > 1000){
+      std::cout << "Error: too large number." << std::endl;
+      continue;
+    }
+    std::map<std::string, double>::iterator it = exchangeTable.lower_bound(date);
+    if (it == exchangeTable.end()){
+      std::cout << "Error: no data found for this date." << std::endl;
+      continue;
+    }
+    if (it->first != date)
+      it--;
+    std::cout << date << " => " << value << " = " << value * it->second << std::endl;
+  }
 
 }
 
@@ -84,16 +106,12 @@ int	BitcoinExchange::checkValidDate(std::string date)
 	std::istringstream(year) >> yValue;
 	std::istringstream(month) >> mValue;
 	std::istringstream(day) >> dValue;
-	
-	std::tm timeinfo = {};
-  timeinfo.tm_year = yValue - 1900;  // Years since 1900
-  timeinfo.tm_mon = mValue - 1;     // Months are 0-based (0 = January, 1 = February, etc.)
-  timeinfo.tm_mday = dValue;
 
-  // Attempt to convert the tm struct to a time_t value, and check if it's valid
-  std::time_t result = std::mktime(&timeinfo);
-  return (result != -1);
-	
+  if (!(mValue >= 1 && mValue <= 12))
+    return 1;
+  if (!(dValue >= 1 && dValue <= 31))
+    return 1;
+  return (0);
 }
 
 const char * BitcoinExchange::InvalidDate::what() const throw()
