@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/09/14 18:44:37 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/16 11:18:32 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,9 @@ public:
 	Fixed operator/(const Fixed& rhs);
 	/*increment/decrement*/
 	Fixed& operator++();
-	Fixed& operator++(int);
+	Fixed operator++(int);
 	Fixed& operator--();
-	Fixed& operator--(int);
+	Fixed operator--(int);
 	/*getter*/
 	int getRawBits(void) const;
 	/*setter*/
@@ -50,9 +50,9 @@ public:
 	/*methods*/
 	float toFloat(void) const;
 	int toInt(void) const;
-	Fixed& min(Fixed& first, Fixed& second);
-	Fixed& max(Fixed& first, Fixed& second);
-	const Fixed& min(const Fixed& first, const Fixed& second);
-	const Fixed& max(const Fixed& first, const Fixed& second);
+	static Fixed& min(Fixed& first, Fixed& second);
+	static Fixed& max(Fixed& first, Fixed& second);
+	static const Fixed& min(const Fixed& first, const Fixed& second);
+	static const Fixed& max(const Fixed& first, const Fixed& second);
 };
 std::ostream& operator<<(std::ostream& os, const Fixed& fixed);

@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:13 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 13:19:11 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/18 12:04:23 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,45 +95,48 @@ bool Fixed::operator!=(Fixed& rhs){
 
 /*arithmetic operators*/
 Fixed Fixed::operator+(const Fixed& rhs){
-	Fixed res;
-	res.setRawBits(this->getRawBits() + rhs.getRawBits());
+	Fixed res(this->toFloat() + rhs.toFloat());
 	return(res);
 }
 
 Fixed Fixed::operator-(const Fixed& rhs){
-	Fixed res;
-	res.setRawBits(this->toFloat() - rhs.toFloat());
+	Fixed res(this->toFloat() - rhs.toFloat());
 	return(res);
 }
 
 Fixed Fixed::operator*(const Fixed& rhs){
-	Fixed res;
-	res.setRawBits(this->toFloat() * rhs.toFloat());
+	Fixed res(this->toFloat() * rhs.toFloat());
 	return(res);
 }
 
 Fixed Fixed::operator/(const Fixed& rhs){
-	Fixed res;
-	res.setRawBits(this->toFloat() / rhs.toFloat());
+	Fixed res(this->toFloat() / rhs.toFloat());
 	return(res);
 }
 
-// /*increment/decrement*/
-// Fixed& Fixed::operator++(){
-	
-// }
+/*increment/decrement*/
+Fixed& Fixed::operator++(){
+	this->fixedPoint++;
+	return (*this);
+}
 
-// Fixed& Fixed::operator++(int){
-	
-// }
+Fixed Fixed::operator++(int){
+	Fixed temp(*this);
+	this->fixedPoint++;
+	return (temp);
+}
 
-// Fixed& Fixed::operator--(){
-	
-// }
+Fixed& Fixed::operator--(){
+	this->fixedPoint--;
+	return (*this);	
+}
 
-// Fixed& Fixed::operator--(int){
-	
-// }
+
+Fixed Fixed::operator--(int){
+	Fixed temp(*this);
+	this->fixedPoint--;
+	return (temp);
+}
 
 /*min && max*/
 

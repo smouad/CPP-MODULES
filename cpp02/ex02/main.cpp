@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/13 12:19:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/14 13:21:19 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/16 11:18:45 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,17 @@
 
 int main( void ) {
 	Fixed a;
-	Fixed const b( Fixed( 5.05f ) * Fixed( 2 ) );
+	Fixed const b(Fixed( 5.05f ) * Fixed( 2 ));
 	
 	std::cout << a << std::endl;
-	// std::cout << ++a << std::endl;
+	std::cout << ++a << std::endl;
 	std::cout << a << std::endl;
-	// std::cout << a++ << std::endl;
+	std::cout << a++ << std::endl;
 	std::cout << a << std::endl;
 	
 	std::cout << b << std::endl;
 	
-	// std::cout << Fixed::max( a, b ) << std::endl;
+	std::cout << Fixed::max( a, b ) << std::endl;
 
 	return 0;
 }

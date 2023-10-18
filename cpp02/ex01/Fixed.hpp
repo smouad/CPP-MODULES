@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/11 18:22:31 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/12 15:14:21 by msodor           ###   ########.fr       */
+/*   Updated: 2023/09/13 14:17:58 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,4 +29,4 @@ public:
 	float toFloat(void) const;
 	int toInt(void) const;
 };
-// std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
+std::ostream& operator<<(std::ostream& os, const Fixed& fixed);
