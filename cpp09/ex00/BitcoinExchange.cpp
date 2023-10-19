@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/18 00:48:29 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/18 22:48:43 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/19 00:33:41 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,9 +112,4 @@ int	BitcoinExchange::checkValidDate(std::string date)
   if (!(dValue >= 1 && dValue <= 31))
     return 1;
   return (0);
-}
-
-const char * BitcoinExchange::InvalidDate::what() const throw()
-{
-	return ("Date out of data base range");
 }
