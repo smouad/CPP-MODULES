@@ -22,8 +22,12 @@ void Rpn::calculate(std::string operation)
   std::stringstream ss(operation);
   std::string op;
 
-  while (std::getline(ss, op, ' ')){
-    if (op[0] >= '0' && op[0] <= '9')
+  while (ss >> op){
+    if (op.length() != 1){
+      std::cout << "Error" << std::endl;
+      return ;
+    }
+    if ((op[0] >= '0' && op[0] <= '9'))
       rpn.push(std::atoi(op.c_str()));
 
     if (op == "+" || op == "-" || op == "*" || op == "/" || op == "%"){
@@ -50,5 +54,5 @@ void Rpn::calculate(std::string operation)
   if (rpn.size() != 1)
     std::cout << "Error" << std::endl;
   else
-    std::cout << rpn.top() << std::endl; 
+    std::cout << rpn.top() << std::endl;
 }
