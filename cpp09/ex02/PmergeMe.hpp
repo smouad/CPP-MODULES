@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/21 18:26:07 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/22 15:40:19 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,8 @@
 #include <sstream>
 #include <string>
 
-class PmergeMe{
-public:
-	//canonial form
-	PmergeMe();
-	PmergeMe(const PmergeMe& src);
-	PmergeMe& operator=(const PmergeMe& src);
-	~PmergeMe();
-	
-	//methods
-	void vectorPair(std::string input);
-	void vectorPrint();
-	void sortPairs();
+void vectorPair(std::string input);
+void vectorPrint();
+void sortPairs();
 
-private:
-	std::vector< std::vector<int> > pairs;
-};
 #endif
