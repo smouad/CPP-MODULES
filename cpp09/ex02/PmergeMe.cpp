@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/23 16:48:17 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/23 23:05:05 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,18 +33,19 @@ void print(std::vector<std::vector<int> >& elems)
 	}
 }
 
-std::vector<std::vector<int> > parsInput(std::string input)
+std::vector<std::vector<int> > parsInput(char **av)
 {
 	std::vector<std::vector<int> > elems;
-	std::vector<int> elem;
-	std::stringstream ss(input);
-	int nbr;
-
-	while (ss >> nbr){
-		elem.push_back(nbr);
-		elems.push_back(elem);
-		elem.clear();
-	}
+  std::vector<int> pair;
+  for (int i = 1; av[i]; i++){
+    std::string str = av[i];
+    std::stringstream ss(str);
+    int token;
+    ss >> token;
+    pair.push_back(token);
+    elems.push_back(pair);
+    pair.clear();
+  }
 	return elems;
 }
 
@@ -121,15 +122,3 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 
 
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		std::cout << "Wrong number of arguments" << std::endl;
-		return 1;
-	}
-	std::vector<std::vector<int> > elems = parsInput(argv[1]);
-	mergeInsertion(elems);
-	print(elems);
-	return 0;
-}
