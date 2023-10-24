@@ -6,45 +6,36 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/24 15:50:08 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/25 00:37:09 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "PmergeMe.hpp"
 
-void print(std::vector<std::vector<int> >& elems)
+void printVectorInt(std::vector<int> vectorInt)
 {
-	std::vector<std::vector<int> >::iterator it = elems.begin();
-	while (it != elems.end())
-	{
-		std::vector<int>::iterator it2 = it->begin();
-		std::cout << "pair: [";
-		while (it2 != it->end())
-		{
-			std::cout << *it2 ;
-			if (it2 + 1 != it->end())
-				std::cout << ", ";
-			it2++;
-		}
-		std::cout << "]"<< std::endl;
-		it++;
-	}
-}
-
-void printRemain(std::vector<int> remain)
-{
-	std::vector<int>::iterator it = remain.begin();
-	std::cout << "remain: [";
-	while (it != remain.end())
+	std::vector<int>::iterator it = vectorInt.begin();
+  std::cout << "\033[1;34m[" << "\033[0m";
+	while (it != vectorInt.end())
 	{
 		std::cout << *it ;
-		if (it + 1 != remain.end())
+		if (it + 1 != vectorInt.end())
 			std::cout << ", ";
 		it++;
 	}
-	std::cout << "]"<< std::endl;
+  std::cout << "\033[1;34m]" << "\033[0m";
+}
+
+void printVector(std::vector<std::vector<int> >& elems)
+{
+	std::vector<std::vector<int> >::iterator it = elems.begin();
+  std::cout << "\033[1;31m[" << "\033[0m";
+	while (it != elems.end())
+	{
+    printVectorInt(*it);
+		it++;
+	}
+  std::cout << "\033[1;31m]" << "\033[0m" << std::endl;
 }
 
 std::vector<std::vector<int> > parsInput(char **av)
@@ -99,26 +90,26 @@ void splitVector(std::vector<std::vector<int> >& elems)
 	while (it != elems.end()){
 		std::vector<int>::iterator it1 = it->begin();
 		while (i < splitNbr){
-			for (int i = 0; i < mid && it1 != it->end(); i++){
+			for (int j = 0; j < mid && it1 != it->end(); j++){
 				pair.push_back(*it1);
 				it1++;
 			}
+			i++;
 			new_elems.push_back(pair);
 			pair.clear();
-			i++;
+      if (i % 2 == 0)
+        it++;
 		}
-		it++;
 	}
 	elems = new_elems;
 }
 
+
 void mergeInsertion(std::vector<std::vector<int> >& elems)
 {
-	// std::cout << "mergeInsertion" << std::endl;
-	// std::cout << "-----------------------" << std::endl;
-	// print(elems);
-	// std::cout << "-----------------------" << std::endl;
 	std::vector<int> remain;
+  std::vector<std::vector<int> > mainChain;
+  std::vector<std::vector<int> > pend; 
 
 	if (elems.size() % 2 != 0){
 		remain = elems.back();
@@ -141,11 +132,21 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 	if (elems.at(0).size() > 1){
 		splitVector(elems);
 	}
+  for (std::vector<std::vector<int> >::iterator it = elems.begin(); it != elems.end(); it++){
+    pend.push_back(*it);
+    it++;
+    if (it != elems.end())
+      mainChain.push_back(*it);
+  }
+  if (remain.size())
+    pend.push_back(remain);
 	std::cout << "mergeInsertion rev" << std::endl;
 	std::cout << "-----------------------" << std::endl;
-	print(elems);
+	std::cout << "main" << std::endl;
+	printVector(mainChain);
+	std::cout << "pend" << std::endl;
+	printVector(pend);
 	std::cout << "-----------------------" << std::endl;
-	// printRemain(remain);
 }
 
 
