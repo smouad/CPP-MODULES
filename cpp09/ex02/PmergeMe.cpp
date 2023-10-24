@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/24 15:01:43 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/24 15:50:08 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,20 @@ void print(std::vector<std::vector<int> >& elems)
 		std::cout << "]"<< std::endl;
 		it++;
 	}
+}
+
+void printRemain(std::vector<int> remain)
+{
+	std::vector<int>::iterator it = remain.begin();
+	std::cout << "remain: [";
+	while (it != remain.end())
+	{
+		std::cout << *it ;
+		if (it + 1 != remain.end())
+			std::cout << ", ";
+		it++;
+	}
+	std::cout << "]"<< std::endl;
 }
 
 std::vector<std::vector<int> > parsInput(char **av)
@@ -73,18 +87,29 @@ void mergeInpairs(std::vector<std::vector<int> >& elems)
 	elems = new_elems;
 }
 
-void printRemain(std::vector<int> remain)
+
+void splitVector(std::vector<std::vector<int> >& elems)
 {
-	std::vector<int>::iterator it = remain.begin();
-	std::cout << "remain: [";
-	while (it != remain.end())
-	{
-		std::cout << *it ;
-		if (it + 1 != remain.end())
-			std::cout << ", ";
+	std::vector<std::vector<int> > new_elems;
+	std::vector<int> pair;
+	int mid = elems.at(0).size() / 2;
+	int splitNbr = elems.size() * 2;
+	std::vector<std::vector<int> >::iterator it = elems.begin();
+	int i = 0;
+	while (it != elems.end()){
+		std::vector<int>::iterator it1 = it->begin();
+		while (i < splitNbr){
+			for (int i = 0; i < mid && it1 != it->end(); i++){
+				pair.push_back(*it1);
+				it1++;
+			}
+			new_elems.push_back(pair);
+			pair.clear();
+			i++;
+		}
 		it++;
 	}
-	std::cout << "]"<< std::endl;
+	elems = new_elems;
 }
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
@@ -110,10 +135,17 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 		it+= 2;
 	}
 	mergeInpairs(elems);
-	if (elems.size() > 1)
+	if (elems.size() > 1){
 		mergeInsertion(elems);
-
-	printRemain(remain);
+	}
+	if (elems.at(0).size() > 1){
+		splitVector(elems);
+	}
+	std::cout << "mergeInsertion rev" << std::endl;
+	std::cout << "-----------------------" << std::endl;
+	print(elems);
+	std::cout << "-----------------------" << std::endl;
+	// printRemain(remain);
 }
 
 

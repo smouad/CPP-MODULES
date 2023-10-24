@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:24 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/23 23:06:11 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/24 15:45:51 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ int main(int argc, char **argv)
 	}
 	std::vector<std::vector<int> > elems = parsInput(argv);
 	mergeInsertion(elems);
-	print(elems);
+	// print(elems);
 	return 0;
 }
