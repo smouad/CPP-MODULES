@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/23 23:05:05 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/24 15:01:43 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,11 +113,7 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 	if (elems.size() > 1)
 		mergeInsertion(elems);
 
-	// std::cout << "mergeInsertion" << std::endl;
-	// std::cout << "-----------------------" << std::endl;
-	// print(elems);
-	// std::cout << "-----------------------" << std::endl;
-	// printRemain(remain);
+	printRemain(remain);
 }
 
 
