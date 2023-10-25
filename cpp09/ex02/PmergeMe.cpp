@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/25 00:37:09 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/25 11:33:17 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,14 @@ void splitVector(std::vector<std::vector<int> >& elems)
 	elems = new_elems;
 }
 
+void binaryInsertionSort(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
+{
+  std::size_t mid = mainChain.size() / 2;
+  std::vector<std::vector<int> >::iterator L = mainChain.begin();
+  std::vector<std::vector<int> >::iterator R = mainChain.end();
+  std::vector<std::vector<int> >::iterator M = mainChain.begin() + mid;
+
+}
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
 {
