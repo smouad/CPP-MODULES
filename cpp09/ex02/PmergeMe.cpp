@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/26 12:53:03 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:57:28 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 		remain = elems.back();
 		elems.pop_back();
 	}
+  
 
 	std::vector<std::vector<int> >::iterator it = elems.begin();
 	while (it != elems.end())
