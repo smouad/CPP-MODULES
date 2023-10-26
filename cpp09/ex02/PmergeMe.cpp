@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/25 11:33:17 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:53:03 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,13 +104,20 @@ void splitVector(std::vector<std::vector<int> >& elems)
 	elems = new_elems;
 }
 
+bool compair(std::vector<int> a, std::vector<int> b)
+{
+  return a.back() < b.back();
+}
+
 void binaryInsertionSort(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
 {
-  std::size_t mid = mainChain.size() / 2;
-  std::vector<std::vector<int> >::iterator L = mainChain.begin();
-  std::vector<std::vector<int> >::iterator R = mainChain.end();
-  std::vector<std::vector<int> >::iterator M = mainChain.begin() + mid;
-
+    std::vector<std::vector<int> >::iterator it = pend.begin();
+  std::vector<std::vector<int> >::iterator it_begin = mainChain.begin();
+  std::vector<std::vector<int> >::iterator it_end = mainChain.end();
+  for (; it != pend.end(); it++){
+    std::vector<std::vector<int> >::iterator insetrPos = std::lower_bound(it_begin, it_end, *it, compair);
+    mainChain.insert(insetrPos, *it);
+  }
 }
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
@@ -148,13 +155,13 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
   }
   if (remain.size())
     pend.push_back(remain);
-	std::cout << "mergeInsertion rev" << std::endl;
-	std::cout << "-----------------------" << std::endl;
-	std::cout << "main" << std::endl;
-	printVector(mainChain);
-	std::cout << "pend" << std::endl;
-	printVector(pend);
-	std::cout << "-----------------------" << std::endl;
+	// std::cout << "mergeInsertion rev" << std::endl;
+	// std::cout << "-----------------------" << std::endl;
+	// std::cout << "main" << std::endl;
+	// printVector(mainChain);
+	// std::cout << "pend" << std::endl;
+	// printVector(pend);
+	// std::cout << "-----------------------" << std::endl;
 }
 
 

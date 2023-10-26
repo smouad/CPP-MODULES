@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:24 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/24 15:45:51 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:50:36 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	std::vector<std::vector<int> > elems = parsInput(argv);
+  std::cout << "before mergeInpairs" << std::endl;
+  printVector(elems);
 	mergeInsertion(elems);
-	// print(elems);
+  std::cout << "after mergeInpairs" << std::endl;
+	printVector(elems);
 	return 0;
 }

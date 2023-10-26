@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/23 23:05:41 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/26 12:50:26 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 #include <sstream>
 #include <string>
 
-void print(std::vector<std::vector<int> >& elems);
+void printVector(std::vector<std::vector<int> >& elems);
 std::vector<std::vector<int> > parsInput(char **av);
 void mergeInpairs(std::vector<std::vector<int> >& elems);
 void mergeInsertion(std::vector<std::vector<int> >& elems);
