@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/26 12:57:28 by msodor           ###   ########.fr       */
+/*   Updated: 2023/10/26 23:04:11 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,45 +79,69 @@ void mergeInpairs(std::vector<std::vector<int> >& elems)
 }
 
 
-void splitVector(std::vector<std::vector<int> >& elems)
-{
-	std::vector<std::vector<int> > new_elems;
-	std::vector<int> pair;
-	int mid = elems.at(0).size() / 2;
-	int splitNbr = elems.size() * 2;
-	std::vector<std::vector<int> >::iterator it = elems.begin();
-	int i = 0;
-	while (it != elems.end()){
-		std::vector<int>::iterator it1 = it->begin();
-		while (i < splitNbr){
-			for (int j = 0; j < mid && it1 != it->end(); j++){
-				pair.push_back(*it1);
-				it1++;
-			}
-			i++;
-			new_elems.push_back(pair);
-			pair.clear();
-      if (i % 2 == 0)
-        it++;
-		}
-	}
-	elems = new_elems;
-}
+// void splitVector(std::vector<std::vector<int> >& elems)
+// {
+// 	std::vector<std::vector<int> > new_elems;
+// 	std::vector<int> pair;
+// 	int mid = elems.at(0).size() / 2;
+// 	int splitNbr = elems.size() * 2;
+// 	std::vector<std::vector<int> >::iterator it = elems.begin();
+// 	int i = 0;
+// 	while (it != elems.end()){
+// 		std::vector<int>::iterator it1 = it->begin();
+// 		while (i < splitNbr){
+// 			for (int j = 0; j < mid && it1 != it->end(); j++){
+// 				pair.push_back(*it1);
+// 				it1++;
+// 			}
+// 			i++;
+// 			new_elems.push_back(pair);
+// 			pair.clear();
+//       if (i % 2 == 0)
+//         it++;
+// 		}
+// 	}
+// 	elems = new_elems;
+// }
+void splitVector(std::vector<std::vector<int> >& elems) {
+  std::vector<std::vector<int> > new_elems;
 
+  if (elems.empty()) {
+    return; // Nothing to split in an empty vector.
+  }
+
+  int mid = elems[0].size() / 2;
+
+  for (std::vector<std::vector<int> >::iterator it = elems.begin(); it != elems.end(); ++it) {
+    std::vector<int>::iterator it1 = it->begin();
+
+    while (it1 != it->end()) {
+      std::vector<int> pair;
+      for (int j = 0; j < mid && it1 != it->end(); j++) {
+        pair.push_back(*it1);
+        ++it1;
+      }
+        new_elems.push_back(pair);
+      }
+  }
+
+  elems = new_elems;
+}
+int comp;
 bool compair(std::vector<int> a, std::vector<int> b)
 {
+  comp++;
   return a.back() < b.back();
 }
 
-void binaryInsertionSort(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
-{
-    std::vector<std::vector<int> >::iterator it = pend.begin();
-  std::vector<std::vector<int> >::iterator it_begin = mainChain.begin();
-  std::vector<std::vector<int> >::iterator it_end = mainChain.end();
-  for (; it != pend.end(); it++){
-    std::vector<std::vector<int> >::iterator insetrPos = std::lower_bound(it_begin, it_end, *it, compair);
-    mainChain.insert(insetrPos, *it);
-  }
+void insertSortedByLastElement(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend) {
+    for (std::vector<std::vector<int> >::const_iterator it = pend.begin(); it != pend.end(); ++it) {
+        // Use std::lower_bound with the custom comparison function.
+        std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), *it, compair);
+
+        // Insert the element into mainChain at the calculated position.
+        mainChain.insert(insertPos, *it);
+    }
 }
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
@@ -137,8 +161,10 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 	{
 		std::vector<int>::iterator it1_last = (it->end() - 1);
 		std::vector<int>::iterator it2_last = ((it + 1)->end() - 1);
-		if (*it1_last > *it2_last)
+		if (*it1_last > *it2_last){
+      comp++;
 			std::swap(*it, *(it + 1));
+    }
 		it+= 2;
 	}
 	mergeInpairs(elems);
@@ -156,13 +182,11 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
   }
   if (remain.size())
     pend.push_back(remain);
-	// std::cout << "mergeInsertion rev" << std::endl;
-	// std::cout << "-----------------------" << std::endl;
-	// std::cout << "main" << std::endl;
-	// printVector(mainChain);
-	// std::cout << "pend" << std::endl;
-	// printVector(pend);
-	// std::cout << "-----------------------" << std::endl;
+
+  insertSortedByLastElement(mainChain, pend);
+  // binaryInsertionSort(mainChain, pend);
+  elems = mainChain;
+  std::cout << comp << std::endl;
 }
 
 
