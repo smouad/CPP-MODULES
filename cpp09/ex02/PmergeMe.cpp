@@ -78,32 +78,36 @@ void mergeInpairs(std::vector<std::vector<int> >& elems)
 	elems = new_elems;
 }
 
+int jacobStahl(int n)
+{
+  if (n == 0)
+    return 0;
+  if (n == 1)
+    return 1;
+  return (jacobStahl(n - 1) + 2 * jacobStahl(n - 2));
+}
 
-// void splitVector(std::vector<std::vector<int> >& elems)
-// {
-// 	std::vector<std::vector<int> > new_elems;
-// 	std::vector<int> pair;
-// 	int mid = elems.at(0).size() / 2;
-// 	int splitNbr = elems.size() * 2;
-// 	std::vector<std::vector<int> >::iterator it = elems.begin();
-// 	int i = 0;
-// 	while (it != elems.end()){
-// 		std::vector<int>::iterator it1 = it->begin();
-// 		while (i < splitNbr){
-// 			for (int j = 0; j < mid && it1 != it->end(); j++){
-// 				pair.push_back(*it1);
-// 				it1++;
-// 			}
-// 			i++;
-// 			new_elems.push_back(pair);
-// 			pair.clear();
-//       if (i % 2 == 0)
-//         it++;
-// 		}
-// 	}
-// 	elems = new_elems;
-// }
-void splitVector(std::vector<std::vector<int> >& elems) {
+std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
+{
+  int jacob = 3;
+  std::vector<int> jacobSeq;
+  while (jacobStahl(jacob) < static_cast<int>(elems.size())){
+    jacobSeq.push_back(jacobStahl(jacob));
+    jacob++;
+  }
+  std::vector<int> jacobSeq2;
+  for (std::vector<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); ++it){
+    if (it + 1 != jacobSeq.end())
+      jacobSeq2.push_back(*(it + 1) - *it);
+    else
+      jacobSeq2.push_back(elems.size() - *it);
+  }
+  return jacobSeq2;
+  // return jacobSeq;
+}
+
+void splitVector(std::vector<std::vector<int> >& elems)
+{
   std::vector<std::vector<int> > new_elems;
 
   if (elems.empty()) {
@@ -124,9 +128,9 @@ void splitVector(std::vector<std::vector<int> >& elems) {
         new_elems.push_back(pair);
       }
   }
-
   elems = new_elems;
 }
+
 int comp;
 bool compair(std::vector<int> a, std::vector<int> b)
 {
@@ -134,14 +138,21 @@ bool compair(std::vector<int> a, std::vector<int> b)
   return a.back() < b.back();
 }
 
-void insertSortedByLastElement(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend) {
-    for (std::vector<std::vector<int> >::const_iterator it = pend.begin(); it != pend.end(); ++it) {
-        // Use std::lower_bound with the custom comparison function.
-        std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), *it, compair);
+void insertSortedByLastElement(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
+{
+  std::vector<int> jacobStahlSeq = ::jacobStahlSeq(pend);
 
-        // Insert the element into mainChain at the calculated position.
-        mainChain.insert(insertPos, *it);
-    }
+  for (std::vector<int>::iterator it = jacobStahlSeq.begin(); it != jacobStahlSeq.end(); ++it){
+    std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), pend.at(*it), compair);
+    mainChain.insert(insertPos, pend.at(*it));
+  }
+  for (std::vector<std::vector<int> >::const_iterator it = pend.begin(); it != pend.end(); ++it){
+    // Use std::lower_bound with the custom comparison function.
+    std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), *it, compair);
+
+    // Insert the element into mainChain at the calculated position.
+    mainChain.insert(insertPos, *it);
+  }
 }
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
@@ -154,7 +165,6 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 		remain = elems.back();
 		elems.pop_back();
 	}
-  
 
 	std::vector<std::vector<int> >::iterator it = elems.begin();
 	while (it != elems.end())

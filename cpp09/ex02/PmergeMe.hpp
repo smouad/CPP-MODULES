@@ -24,5 +24,6 @@ void printVector(std::vector<std::vector<int> >& elems);
 std::vector<std::vector<int> > parsInput(char **av);
 void mergeInpairs(std::vector<std::vector<int> >& elems);
 void mergeInsertion(std::vector<std::vector<int> >& elems);
+std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems);
 
 #endif

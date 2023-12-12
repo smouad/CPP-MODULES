@@ -20,10 +20,14 @@ int main(int argc, char **argv)
 		return 1;
 	}
 	std::vector<std::vector<int> > elems = parsInput(argv);
-  std::cout << "before mergeInpairs" << std::endl;
-  printVector(elems);
-	mergeInsertion(elems);
-  std::cout << "after mergeInpairs" << std::endl;
+	std::cout << "before mergeInpairs" << std::endl;
 	printVector(elems);
+	mergeInsertion(elems);
+	std::cout << "after mergeInpairs" << std::endl;
+	printVector(elems);
+	std::vector<int> jacob = jacobStahlSeq(elems);
+	std::cout << "jacobStahlSeq" << std::endl;
+	for (size_t i = 0; i < jacob.size(); i++)
+		std::cout << jacob[i] << " ";
 	return 0;
 }
