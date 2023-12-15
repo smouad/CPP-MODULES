@@ -25,9 +25,5 @@ int main(int argc, char **argv)
 	mergeInsertion(elems);
 	std::cout << "after mergeInpairs" << std::endl;
 	printVector(elems);
-	std::vector<int> jacob = jacobStahlSeq(elems);
-	std::cout << "jacobStahlSeq" << std::endl;
-	for (size_t i = 0; i < jacob.size(); i++)
-		std::cout << jacob[i] << " ";
 	return 0;
 }

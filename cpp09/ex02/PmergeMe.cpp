@@ -89,7 +89,7 @@ int jacobStahl(int n)
 
 std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
 {
-  int jacob = 3;
+  int jacob = 2;
   std::vector<int> jacobSeq;
   while (jacobStahl(jacob) < static_cast<int>(elems.size())){
     jacobSeq.push_back(jacobStahl(jacob));
@@ -135,25 +135,42 @@ int comp;
 bool compair(std::vector<int> a, std::vector<int> b)
 {
   comp++;
-  return a.back() < b.back();
+  return a.back() <= b.back();
 }
 
 void insertSortedByLastElement(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
 {
-  std::vector<int> jacobStahlSeq = ::jacobStahlSeq(pend);
+  // std::cout << "mainChain: ";
+  // printVector(mainChain);
+  // std::cout << "pend: ";
+  // printVector(pend);
+  std::vector<int> jacobStahl = jacobStahlSeq(pend);
 
-  for (std::vector<int>::iterator it = jacobStahlSeq.begin(); it != jacobStahlSeq.end(); ++it){
-    std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), pend.at(*it), compair);
-    mainChain.insert(insertPos, pend.at(*it));
-  }
-  for (std::vector<std::vector<int> >::const_iterator it = pend.begin(); it != pend.end(); ++it){
-    // Use std::lower_bound with the custom comparison function.
-    std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.end(), *it, compair);
-
-    // Insert the element into mainChain at the calculated position.
-    mainChain.insert(insertPos, *it);
+  std::cout << "jacobStahl: ";
+  unsigned int seq[] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525};
+  mainChain.insert(mainChain.begin(), pend.front());
+  pend.erase(pend.begin());
+  size_t first = 0;
+  size_t second = 0;
+  size_t k = 0;
+  size_t sum = 0;
+  // }
+  // std::cout << std::endl;
+  for (std::vector<std::vector<int> >::iterator it = pend.begin(); it != pend.end(); ++it){
+    first = seq[k + 1];// 3
+    second = seq[k] + 1;  //1 + 1
+    if (first > pend.size())
+      first = pend.size();
+    while (first >= second){
+      std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.begin() + first + sum, *it, compair);
+      mainChain.insert(insertPos, *it);
+      sum++;
+      first--;
+    }
+    k++;
   }
 }
+
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
 {
@@ -178,7 +195,7 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 		it+= 2;
 	}
 	mergeInpairs(elems);
-	if (elems.size() > 1){
+	if (elems.size() > 1){ 
 		mergeInsertion(elems);
 	}
 	if (elems.at(0).size() > 1){
@@ -194,10 +211,8 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
     pend.push_back(remain);
 
   insertSortedByLastElement(mainChain, pend);
-  // binaryInsertionSort(mainChain, pend);
+
   elems = mainChain;
   std::cout << comp << std::endl;
 }
-
-
 
