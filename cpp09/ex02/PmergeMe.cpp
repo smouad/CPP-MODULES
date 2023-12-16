@@ -12,6 +12,8 @@
 
 #include "PmergeMe.hpp"
 
+int comp = 0;
+
 void printVectorInt(std::vector<int> vectorInt)
 {
 	std::vector<int>::iterator it = vectorInt.begin();
@@ -87,6 +89,7 @@ int jacobStahl(int n)
   return (jacobStahl(n - 1) + 2 * jacobStahl(n - 2));
 }
 
+
 std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
 {
   int jacob = 2;
@@ -104,6 +107,30 @@ std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
   }
   return jacobSeq2;
   // return jacobSeq;
+}
+
+
+
+
+std::vector<int> jacobStahlSeq(int n)
+{
+    std::vector<int> seq;
+    seq.push_back(0);
+    seq.push_back(1);
+    int tmp;
+
+
+    int i = 2;
+    tmp = 0;
+    while (tmp < n)
+    {
+        tmp = seq[i - 1] + 2 * seq[i - 2];
+        seq.push_back(tmp);
+        i++;
+    }
+    seq.erase(seq.begin());
+    seq.erase(seq.begin());
+    return seq;
 }
 
 void splitVector(std::vector<std::vector<int> >& elems)
@@ -131,7 +158,6 @@ void splitVector(std::vector<std::vector<int> >& elems)
   elems = new_elems;
 }
 
-int comp;
 bool compair(std::vector<int> a, std::vector<int> b)
 {
   comp++;
@@ -140,37 +166,32 @@ bool compair(std::vector<int> a, std::vector<int> b)
 
 void insertSortedByLastElement(std::vector<std::vector<int> >& mainChain, std::vector<std::vector<int> >& pend)
 {
-  // std::cout << "mainChain: ";
-  // printVector(mainChain);
-  // std::cout << "pend: ";
-  // printVector(pend);
-  std::vector<int> jacobStahl = jacobStahlSeq(pend);
+  std::vector<int> seq = jacobStahlSeq(pend.size());
 
-  std::cout << "jacobStahl: ";
-  unsigned int seq[] = {1, 3, 5, 11, 21, 43, 85, 171, 341, 683, 1365, 2731, 5461, 10923, 21845, 43691, 87381, 174763, 349525};
-  mainChain.insert(mainChain.begin(), pend.front());
-  pend.erase(pend.begin());
-  size_t first = 0;
-  size_t second = 0;
-  size_t k = 0;
-  size_t sum = 0;
-  // }
-  // std::cout << std::endl;
-  for (std::vector<std::vector<int> >::iterator it = pend.begin(); it != pend.end(); ++it){
-    first = seq[k + 1];// 3
-    second = seq[k] + 1;  //1 + 1
-    if (first > pend.size())
-      first = pend.size();
-    while (first >= second){
-      std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.begin() + first + sum, *it, compair);
-      mainChain.insert(insertPos, *it);
-      sum++;
-      first--;
+  int prev = 0;
+  int lbg = 0;
+  int jacob = 0;
+  for (size_t i = 0; i < seq.size(); i++)
+  {
+    jacob = seq[i];
+    while (jacob > prev)
+    {
+      if (jacob - 1 == 0){
+        lbg++;
+        mainChain.insert(mainChain.begin(), pend[jacob - 1]);
+      }
+
+      else
+      {
+        std::vector<std::vector<int> >::iterator insertPos = std::lower_bound(mainChain.begin(), mainChain.begin() + lbg + jacob - 1, pend[jacob - 1], compair);
+        mainChain.insert(insertPos, pend[jacob - 1]);
+        lbg++;
+      }
+      jacob--;
     }
-    k++;
+    prev = seq[i];
   }
 }
-
 
 void mergeInsertion(std::vector<std::vector<int> >& elems)
 {
@@ -188,8 +209,8 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
 	{
 		std::vector<int>::iterator it1_last = (it->end() - 1);
 		std::vector<int>::iterator it2_last = ((it + 1)->end() - 1);
+    comp++;
 		if (*it1_last > *it2_last){
-      comp++;
 			std::swap(*it, *(it + 1));
     }
 		it+= 2;
@@ -209,10 +230,7 @@ void mergeInsertion(std::vector<std::vector<int> >& elems)
   }
   if (remain.size())
     pend.push_back(remain);
-
   insertSortedByLastElement(mainChain, pend);
-
   elems = mainChain;
-  std::cout << comp << std::endl;
 }
 

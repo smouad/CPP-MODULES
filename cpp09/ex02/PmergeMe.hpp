@@ -20,6 +20,7 @@
 #include <sstream>
 #include <string>
 
+extern int comp;
 void printVector(std::vector<std::vector<int> >& elems);
 std::vector<std::vector<int> > parsInput(char **av);
 void mergeInpairs(std::vector<std::vector<int> >& elems);

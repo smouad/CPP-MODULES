@@ -14,16 +14,23 @@
 
 int main(int argc, char **argv)
 {
+	clock_t start, end;
+	double time_taken;
 	if (argc == 1)
 	{
 		std::cout << "Wrong number of arguments" << std::endl;
 		return 1;
 	}
 	std::vector<std::vector<int> > elems = parsInput(argv);
-	std::cout << "before mergeInpairs" << std::endl;
+	std::cout << "before mergeInpairs: ";
 	printVector(elems);
+	start = clock();
 	mergeInsertion(elems);
-	std::cout << "after mergeInpairs" << std::endl;
+	end = clock();
+	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	std::cout << "after mergeInpairs: ";
 	printVector(elems);
+	std::cout << "time taken by mergeInpairs is: " <<  time_taken << " us" << std::endl;
+	std::cout << "comp: " << comp << std::endl;
 	return 0;
 }
