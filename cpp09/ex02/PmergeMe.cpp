@@ -90,24 +90,24 @@ int jacobStahl(int n)
 }
 
 
-std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
-{
-  int jacob = 2;
-  std::vector<int> jacobSeq;
-  while (jacobStahl(jacob) < static_cast<int>(elems.size())){
-    jacobSeq.push_back(jacobStahl(jacob));
-    jacob++;
-  }
-  std::vector<int> jacobSeq2;
-  for (std::vector<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); ++it){
-    if (it + 1 != jacobSeq.end())
-      jacobSeq2.push_back(*(it + 1) - *it);
-    else
-      jacobSeq2.push_back(elems.size() - *it);
-  }
-  return jacobSeq2;
-  // return jacobSeq;
-}
+// std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
+// {
+//   int jacob = 2;
+//   std::vector<int> jacobSeq;
+//   while (jacobStahl(jacob) < static_cast<int>(elems.size())){
+//     jacobSeq.push_back(jacobStahl(jacob));
+//     jacob++;
+//   }
+//   std::vector<int> jacobSeq2;
+//   for (std::vector<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); ++it){
+//     if (it + 1 != jacobSeq.end())
+//       jacobSeq2.push_back(*(it + 1) - *it);
+//     else
+//       jacobSeq2.push_back(elems.size() - *it);
+//   }
+//   return jacobSeq2;
+//   // return jacobSeq;
+// }
 
 
 
@@ -125,7 +125,10 @@ std::vector<int> jacobStahlSeq(int n)
     while (tmp < n)
     {
         tmp = seq[i - 1] + 2 * seq[i - 2];
-        seq.push_back(tmp);
+        if (tmp > n)
+            seq.push_back(n);
+        else
+          seq.push_back(tmp);
         i++;
     }
     seq.erase(seq.begin());
