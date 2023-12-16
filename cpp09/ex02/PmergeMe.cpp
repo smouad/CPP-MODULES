@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/26 23:04:11 by msodor           ###   ########.fr       */
+/*   Updated: 2023/12/16 23:11:10 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,58 +80,6 @@ void mergeInpairs(std::vector<std::vector<int> >& elems)
 	elems = new_elems;
 }
 
-int jacobStahl(int n)
-{
-  if (n == 0)
-    return 0;
-  if (n == 1)
-    return 1;
-  return (jacobStahl(n - 1) + 2 * jacobStahl(n - 2));
-}
-
-
-std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems)
-{
-  int jacob = 2;
-  std::vector<int> jacobSeq;
-  while (jacobStahl(jacob) < static_cast<int>(elems.size())){
-    jacobSeq.push_back(jacobStahl(jacob));
-    jacob++;
-  }
-  std::vector<int> jacobSeq2;
-  for (std::vector<int>::iterator it = jacobSeq.begin(); it != jacobSeq.end(); ++it){
-    if (it + 1 != jacobSeq.end())
-      jacobSeq2.push_back(*(it + 1) - *it);
-    else
-      jacobSeq2.push_back(elems.size() - *it);
-  }
-  return jacobSeq2;
-  // return jacobSeq;
-}
-
-
-
-
-std::vector<int> jacobStahlSeq(int n)
-{
-    std::vector<int> seq;
-    seq.push_back(0);
-    seq.push_back(1);
-    int tmp;
-
-
-    int i = 2;
-    tmp = 0;
-    while (tmp < n)
-    {
-        tmp = seq[i - 1] + 2 * seq[i - 2];
-        seq.push_back(tmp);
-        i++;
-    }
-    seq.erase(seq.begin());
-    seq.erase(seq.begin());
-    return seq;
-}
 
 void splitVector(std::vector<std::vector<int> >& elems)
 {
@@ -156,6 +104,30 @@ void splitVector(std::vector<std::vector<int> >& elems)
       }
   }
   elems = new_elems;
+}
+
+std::vector<int> jacobStahlSeq(int n)
+{
+    std::vector<int> seq;
+    seq.push_back(0);
+    seq.push_back(1);
+    int tmp;
+
+
+    int i = 2;
+    tmp = 0;
+    while (tmp < n)
+    {
+        tmp = seq[i - 1] + 2 * seq[i - 2];
+        if (tmp > n)
+            tmp = n;
+        else
+            seq.push_back(tmp);
+        i++;
+    }
+    seq.erase(seq.begin());
+    seq.erase(seq.begin());
+    return seq;
 }
 
 bool compair(std::vector<int> a, std::vector<int> b)
