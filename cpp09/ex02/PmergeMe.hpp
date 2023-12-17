@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/26 12:50:26 by msodor           ###   ########.fr       */
+/*   Updated: 2023/12/16 23:11:32 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,24 @@
 #include <iostream>
 #include <algorithm>
 #include <vector>
+#include <list>
+#include <deque>
 #include <utility>
 #include <sstream>
 #include <string>
 
-extern int comp;
+extern int compDeque;
+extern int compVectore;
+
+/* vector */
 void printVector(std::vector<std::vector<int> >& elems);
 std::vector<std::vector<int> > parsInput(char **av);
-void mergeInpairs(std::vector<std::vector<int> >& elems);
 void mergeInsertion(std::vector<std::vector<int> >& elems);
-std::vector<int> jacobStahlSeq(std::vector<std::vector<int> > elems);
+
+/* deque */
+void printDeque(std::deque<std::deque<int> >& elems);
+std::deque<std::deque<int> > parsInputDeque(char **av);
+void mergeInsertionDeque(std::deque<std::deque<int> >& elems);
+
 
 #endif

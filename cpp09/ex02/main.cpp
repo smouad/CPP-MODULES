@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:24 by msodor            #+#    #+#             */
-/*   Updated: 2023/10/26 12:50:36 by msodor           ###   ########.fr       */
+/*   Updated: 2023/12/16 23:11:20 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,23 @@ int main(int argc, char **argv)
 		std::cout << "Wrong number of arguments" << std::endl;
 		return 1;
 	}
-	std::vector<std::vector<int> > elems = parsInput(argv);
+	std::vector<std::vector<int> > vectors = parsInput(argv);
+	std::deque<std::deque<int> > deques = parsInputDeque(argv);
 	std::cout << "before mergeInpairs: ";
-	printVector(elems);
+	printVector(vectors);
 	start = clock();
-	mergeInsertion(elems);
+	mergeInsertion(vectors);
 	end = clock();
 	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
 	std::cout << "after mergeInpairs: ";
-	printVector(elems);
-	std::cout << "time taken by mergeInpairs is: " <<  time_taken << " us" << std::endl;
-	std::cout << "comp: " << comp << std::endl;
+	printVector(vectors);
+	std::cout << "Time to process a range of " << vectors.size() << " elements with std::vector :" <<  time_taken << " us" << std::endl;
+
+	start = clock();
+	mergeInsertionDeque(deques);
+	end = clock();
+	time_taken = double(end - start) / double(CLOCKS_PER_SEC);
+	std::cout << "Time to process a range of " << deques.size() << " elements with std::deque :" <<  time_taken << " us" << std::endl;
 	return 0;
 }
+
