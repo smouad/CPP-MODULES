@@ -67,7 +67,7 @@ void BitcoinExchange::getChange(std::string inputFile)
 			std::cout << "Error: bad input => " << line << std::endl;
 			continue;
 		}
-		date = line.substr(0, pipePos - 1);
+		date = line.substr(0, pipePos);
     if (checkValidDate(date)){
       std::cout << "Error: bad input => " << date << std::endl;
       continue;
@@ -101,7 +101,7 @@ int	BitcoinExchange::checkValidDate(std::string date)
 
 	std::getline(ss, year, '-');
 	std::getline(ss, month, '-');
-	std::getline(ss, day, '-');
+	std::getline(ss, day, '|');
 
 	std::istringstream(year) >> yValue;
 	std::istringstream(month) >> mValue;
