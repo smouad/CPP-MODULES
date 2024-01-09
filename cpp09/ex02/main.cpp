@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:24 by msodor            #+#    #+#             */
-/*   Updated: 2024/01/09 22:00:55 by msodor           ###   ########.fr       */
+/*   Updated: 2024/01/09 22:10:03 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,6 @@
 
 int main(int argc, char **argv)
 {
-    (void)argc;
-    (void)argv;
-    std::vector<int> seq = jacobStahlSeq(7);
-    for (int i = 0; i < (int)seq.size(); i++)
-        std::cout << seq[i] << std::endl;
 	// clock_t start, end;
 	// double time_taken;
 	// if (argc == 1)
