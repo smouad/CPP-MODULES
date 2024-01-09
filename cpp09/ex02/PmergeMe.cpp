@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2023/12/16 23:11:10 by msodor           ###   ########.fr       */
+/*   Updated: 2024/01/09 21:53:41 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,9 @@ void printVector(std::vector<std::vector<int> >& elems)
   std::cout << "\033[1;31m[" << "\033[0m";
 	while (it != elems.end())
 	{
-    printVectorInt(*it);
+        printVectorInt(*it);
+		if (it + 1 != elems.end())
+			std::cout << ", ";
 		it++;
 	}
   std::cout << "\033[1;31m]" << "\033[0m" << std::endl;
@@ -237,6 +239,8 @@ void printDeque(std::deque<std::deque<int> >& elems)
   while (it != elems.end())
   {
     printDequeInt(*it);
+    if (it + 1 != elems.end())
+      std::cout << ", ";
     it++;
   }
   std::cout << "\033[1;31m]" << "\033[0m" << std::endl;
