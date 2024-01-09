@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/19 13:37:30 by msodor            #+#    #+#             */
-/*   Updated: 2023/12/16 23:11:32 by msodor           ###   ########.fr       */
+/*   Updated: 2024/01/09 22:01:04 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void printDeque(std::deque<std::deque<int> >& elems);
 std::deque<std::deque<int> > parsInputDeque(char **av);
 void mergeInsertionDeque(std::deque<std::deque<int> >& elems);
 
-
+std::vector<int> jacobStahlSeq(int n);
 #endif

@@ -6,7 +6,7 @@
 /*   By: msodor <msodor@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/23 12:39:05 by msodor            #+#    #+#             */
-/*   Updated: 2024/01/09 21:53:41 by msodor           ###   ########.fr       */
+/*   Updated: 2024/01/09 22:05:57 by msodor           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,12 +121,18 @@ std::vector<int> jacobStahlSeq(int n)
 
 
     int i = 2;
+    int j = 0;
     tmp = 0;
-    while (tmp < n)
+    while (j < n)
     {
         tmp = seq[i - 1] + 2 * seq[i - 2];
-        if (tmp > n)
+        std::cout << tmp << "tmp" << std::endl;
+        std::cout << n << "==" << std::endl;
+        
+        if (tmp > n){
             tmp = n;
+            break;
+        }
         else
             seq.push_back(tmp);
         i++;
